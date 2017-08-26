@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router";
 
 class Home extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class Home extends Component {
   }
 
   play() {
-    this.props.history.push('/board')
+    this.props.setBlocks(this.state.width, this.state.height);
+    this.props.history.push("/board");
   }
 
   areValuesValid() {
@@ -69,4 +70,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

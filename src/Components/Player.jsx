@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Score extends Component {
+class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +11,7 @@ class Score extends Component {
 
   boardDetails = this.props.boardDetails;
   mushrooms = this.props.mushrooms;
+  startTime = new Date().getTime();
 
   shiftDirection = direction => {
     if (this.intervalId) {
@@ -58,7 +59,7 @@ class Score extends Component {
         mushroom.remaining
     );
     if (foundMushrooms) {
-      this.props.eatMushroom(foundMushrooms);
+      this.props.eatMushroom(foundMushrooms, this.startTime);
     }
   };
 
@@ -115,4 +116,4 @@ class Score extends Component {
   }
 }
 
-export default Score;
+export default Player;

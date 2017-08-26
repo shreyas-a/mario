@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router';
 
 import Player from "./Player.jsx";
 import Mushroom from "./Mushroom.jsx";
@@ -8,8 +9,6 @@ class Board extends Component {
     super(props);
 
     this.state = {
-      horizontalBlocks: 50,
-      verticalBlocks: 30,
       blockWidth: 30,
       blockHeight: 30,
       mushrooms: [],
@@ -22,19 +21,20 @@ class Board extends Component {
     for (let i = 0; i < this.totalMushrooms; i++) {
       this.state.mushrooms.push({
         key: i,
-        x: getRandom(0, this.state.horizontalBlocks - 1),
-        y: getRandom(0, this.state.verticalBlocks - 1),
+        x: getRandom(0, this.props.horizontalBlocks - 1),
+        y: getRandom(0, this.props.verticalBlocks - 1),
         remaining: true
       });
     }
   }
 
+  // TODO
   // totalMushrooms = Math.round(
-  //   (this.state.horizontalBlocks + this.state.verticalBlocks) / 2
+  //   (this.props.horizontalBlocks + this.props.verticalBlocks) / 2
   // );
   totalMushrooms = 3;
 
-  eatMushroom = foundMushroom => {
+  eatMushroom = (foundMushroom, startTime) => {
     const updatedMushrooms = this.state.mushrooms;
     updatedMushrooms[foundMushroom.key].remaining = false;
     this.setState({
@@ -43,15 +43,15 @@ class Board extends Component {
     });
 
     if (this.totalMushrooms === this.state.score) {
-      alert("Score: " + this.state.score);
+      this.props.setTotalTime(startTime);
       this.props.history.push("/score");
     }
   };
 
   render() {
     const styles = {
-      width: this.state.horizontalBlocks * this.state.blockWidth + "px",
-      height: this.state.verticalBlocks * this.state.blockHeight + "px",
+      width: this.props.horizontalBlocks * this.state.blockWidth + "px",
+      height: this.props.verticalBlocks * this.state.blockHeight + "px",
       background: "white",
       border: "1px solid black"
     };
@@ -64,7 +64,12 @@ class Board extends Component {
         <hr />
         <div style={styles}>
           <Player
-            boardDetails={this.state}
+            boardDetails={{
+              blockWidth: this.state.blockWidth,
+              blockHeight: this.state.blockHeight,
+              horizontalBlocks: this.props.horizontalBlocks,
+              verticalBlocks: this.props.verticalBlocks
+            }}
             mushrooms={this.state.mushrooms}
             eatMushroom={this.eatMushroom}
           />
@@ -89,4 +94,4 @@ class Board extends Component {
   }
 }
 
-export default Board;
+export default withRouter(Board);
