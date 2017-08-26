@@ -4,6 +4,7 @@ const webpack = require("webpack");
 // Plugins
 const html = require("html-webpack-plugin");
 const clean = require("clean-webpack-plugin");
+const copy = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -23,7 +24,7 @@ module.exports = {
         use: ["style-loader", "css-loader"]
       },
       {
-        test: /\.(png|jpe?g|svg|gif)/,
+        test: /\.(png|jpe?g|svg|gif|ico)/,
         use: "file-loader"
       }
     ]
@@ -42,6 +43,7 @@ module.exports = {
         return module.context && module.context.indexOf("node_modules") !== -1;
       }
     }),
+    new copy([{ from: "public" }]),
     new webpack.optimize.CommonsChunkPlugin({
       name: "runtime"
     })
