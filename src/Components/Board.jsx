@@ -12,7 +12,8 @@ class Board extends Component {
       verticalBlocks: 30,
       blockWidth: 30,
       blockHeight: 30,
-      mushrooms: []
+      mushrooms: [],
+      score: 0
     };
 
     const totalMushrooms = Math.round(
@@ -24,12 +25,22 @@ class Board extends Component {
 
     for (let i = 0; i < totalMushrooms; i++) {
       this.state.mushrooms.push({
-        x: getRandom(0, this.state.horizontalBlocks-1),
-        y: getRandom(0, this.state.verticalBlocks-1),
+        key: i,
+        x: getRandom(0, this.state.horizontalBlocks - 1),
+        y: getRandom(0, this.state.verticalBlocks - 1),
         remaining: true
       });
     }
   }
+
+  eatMushroom = foundMushroom => {
+    const updatedMushrooms = this.state.mushrooms;
+    updatedMushrooms[foundMushroom.key].remaining = false;
+    this.setState({
+      mushrooms: updatedMushrooms,
+      score: ++this.state.score
+    });
+  };
 
   render() {
     const styles = {
@@ -41,18 +52,22 @@ class Board extends Component {
 
     return (
       <div>
-        <h1>MARIO - Play</h1>
+        <h1>MARIO - {this.state.score}</h1>
         <hr />
         <div style={styles}>
-          <Player boardDetails={this.state} />
+          <Player
+            boardDetails={this.state}
+            mushrooms={this.state.mushrooms}
+            eatMushroom={this.eatMushroom}
+          />
           {this.state.mushrooms
             .filter(mushroom => {
               return mushroom.remaining;
             })
-            .map((mushroom, index) => {
+            .map(mushroom => {
               return (
                 <Mushroom
-                  key={index}
+                  key={mushroom.key}
                   x={mushroom.x}
                   y={mushroom.y}
                   blockWidth={this.state.blockWidth}
@@ -60,7 +75,6 @@ class Board extends Component {
                 />
               );
             })}
-          <Mushroom x="12" y="24" blockWidth="30" blockHeight="30" />
         </div>
       </div>
     );

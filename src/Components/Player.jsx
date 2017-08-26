@@ -10,6 +10,7 @@ class Score extends Component {
   }
 
   boardDetails = this.props.boardDetails;
+  mushrooms = this.props.mushrooms;
 
   shiftDirection = direction => {
     if (this.intervalId) {
@@ -48,28 +49,39 @@ class Score extends Component {
         default:
           return;
       }
-    }, 500);
+    }, 50);
+
+    const foundMushrooms = this.props.mushrooms.find(
+      mushroom =>
+        mushroom.x === this.state.left &&
+        mushroom.y === this.state.top &&
+        mushroom.remaining
+    );
+    if (foundMushrooms) {
+      this.props.eatMushroom(foundMushrooms);
+    }
   };
 
   checkDirection = e => {
+    const toDirection = e.keyCode || e;
     const { left, top } = this.state;
     const bottomLimit = this.boardDetails.verticalBlocks - 1;
     const rightLimit = this.boardDetails.horizontalBlocks - 1;
 
-    if (left > rightLimit) {
+    if (left > rightLimit - 1 && toDirection === 39) {
       // Reached RIGHT end, redirecting LEFT
       this.shiftDirection(37);
-    } else if (top > bottomLimit) {
+    } else if (top > bottomLimit - 1 && toDirection === 40) {
       // Reached BOTTOM end, redirecting UP
       this.shiftDirection(38);
-    } else if (top < 0) {
+    } else if (top < 1 && toDirection === 38) {
       // Reached TOP end, redirecting DOWN
       this.shiftDirection(40);
-    } else if (left < 0) {
+    } else if (left < 1 && toDirection === 37) {
       // Reached LEFT end, redirecting RIGHT
       this.shiftDirection(39);
     } else {
-      this.shiftDirection(e.keyCode || e);
+      this.shiftDirection(toDirection);
     }
   };
 
