@@ -10,7 +10,7 @@ module.exports = {
   devtool: "inline-source-map",
   output: {
     filename: "[name].[hash].js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "../dist")
   },
   module: {
     rules: [
@@ -29,7 +29,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new clean(["dist"]),
+    new clean(["dist"], { root: process.cwd(), verbose: true }),
     new html({
       template: "./index.html",
       inject: "body"

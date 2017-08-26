@@ -1,10 +1,10 @@
 const webpack = require("webpack");
-const merge = require('webpack-merge');
+const merge = require("webpack-merge");
 
 // Webpack configurations
-const commonConfig = require("./webpack.common.js");
-const devConfig = require("./webpack.dev.js");
-const prodConfig = require("./webpack.prod.js");
+const commonConfig = require("./webpack/webpack.common.js");
+const devConfig = require("./webpack/webpack.dev.js");
+const prodConfig = require("./webpack/webpack.prod.js");
 
 var TARGET = process.env.npm_lifecycle_event;
 
