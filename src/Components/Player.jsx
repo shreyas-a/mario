@@ -89,6 +89,12 @@ class Score extends Component {
     window.onkeydown = this.checkDirection;
   }
 
+  componentWillUnmount() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
+
   render() {
     const styles = {
       height: this.boardDetails.blockHeight + "px",

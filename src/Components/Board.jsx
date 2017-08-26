@@ -16,14 +16,10 @@ class Board extends Component {
       score: 0
     };
 
-    const totalMushrooms = Math.round(
-      (this.state.horizontalBlocks + this.state.verticalBlocks) / 2
-    );
-
     const getRandom = (min, max) =>
       Math.floor(Math.random() * (max - min + 1)) + min;
 
-    for (let i = 0; i < totalMushrooms; i++) {
+    for (let i = 0; i < this.totalMushrooms; i++) {
       this.state.mushrooms.push({
         key: i,
         x: getRandom(0, this.state.horizontalBlocks - 1),
@@ -33,13 +29,23 @@ class Board extends Component {
     }
   }
 
+  // totalMushrooms = Math.round(
+  //   (this.state.horizontalBlocks + this.state.verticalBlocks) / 2
+  // );
+  totalMushrooms = 3;
+
   eatMushroom = foundMushroom => {
     const updatedMushrooms = this.state.mushrooms;
     updatedMushrooms[foundMushroom.key].remaining = false;
     this.setState({
       mushrooms: updatedMushrooms,
-      score: ++this.state.score
+      score: this.state.score + 1
     });
+
+    if (this.totalMushrooms === this.state.score) {
+      alert("Score: " + this.state.score);
+      this.props.history.push("/score");
+    }
   };
 
   render() {
@@ -52,7 +58,9 @@ class Board extends Component {
 
     return (
       <div>
-        <h1>MARIO - {this.state.score}</h1>
+        <h1>
+          MARIO - {this.state.score}
+        </h1>
         <hr />
         <div style={styles}>
           <Player
