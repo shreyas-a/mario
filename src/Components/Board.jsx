@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Player from "./Player.jsx";
+import Mushroom from "./Mushroom.jsx";
 
 class Board extends Component {
   constructor(props) {
@@ -10,8 +11,24 @@ class Board extends Component {
       horizontalBlocks: 50,
       verticalBlocks: 30,
       blockWidth: 30,
-      blockHeight: 30
+      blockHeight: 30,
+      mushrooms: []
     };
+
+    const totalMushrooms = Math.round(
+      (this.state.horizontalBlocks + this.state.verticalBlocks) / 2
+    );
+
+    const getRandom = (min, max) =>
+      Math.floor(Math.random() * (max - min + 1)) + min;
+
+    for (let i = 0; i < totalMushrooms; i++) {
+      this.state.mushrooms.push({
+        x: getRandom(0, this.state.horizontalBlocks-1),
+        y: getRandom(0, this.state.verticalBlocks-1),
+        remaining: true
+      });
+    }
   }
 
   render() {
@@ -28,6 +45,22 @@ class Board extends Component {
         <hr />
         <div style={styles}>
           <Player boardDetails={this.state} />
+          {this.state.mushrooms
+            .filter(mushroom => {
+              return mushroom.remaining;
+            })
+            .map((mushroom, index) => {
+              return (
+                <Mushroom
+                  key={index}
+                  x={mushroom.x}
+                  y={mushroom.y}
+                  blockWidth={this.state.blockWidth}
+                  blockHeight={this.state.blockHeight}
+                />
+              );
+            })}
+          <Mushroom x="12" y="24" blockWidth="30" blockHeight="30" />
         </div>
       </div>
     );

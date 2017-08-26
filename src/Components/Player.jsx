@@ -48,7 +48,7 @@ class Score extends Component {
         default:
           return;
       }
-    }, 50);
+    }, 500);
   };
 
   checkDirection = e => {
@@ -56,16 +56,16 @@ class Score extends Component {
     const bottomLimit = this.boardDetails.verticalBlocks - 1;
     const rightLimit = this.boardDetails.horizontalBlocks - 1;
 
-    if (left >= rightLimit) {
+    if (left > rightLimit) {
       // Reached RIGHT end, redirecting LEFT
       this.shiftDirection(37);
-    } else if (top >= bottomLimit) {
+    } else if (top > bottomLimit) {
       // Reached BOTTOM end, redirecting UP
       this.shiftDirection(38);
-    } else if (top <= 0) {
+    } else if (top < 0) {
       // Reached TOP end, redirecting DOWN
       this.shiftDirection(40);
-    } else if (left <= 0) {
+    } else if (left < 0) {
       // Reached LEFT end, redirecting RIGHT
       this.shiftDirection(39);
     } else {
