@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
 import Player from "./Player.jsx";
 import Mushroom from "./Mushroom.jsx";
@@ -18,21 +19,22 @@ class Board extends Component {
     const getRandom = (min, max) =>
       Math.floor(Math.random() * (max - min + 1)) + min;
 
+      const horizontalBlocks =  this.props.horizontalBlocks
+      const verticalBlocks =  this.props.verticalBlocks
+
     for (let i = 0; i < this.totalMushrooms; i++) {
       this.state.mushrooms.push({
         key: i,
-        x: getRandom(0, this.props.horizontalBlocks - 1),
-        y: getRandom(0, this.props.verticalBlocks - 1),
+        x: getRandom(0, horizontalBlocks - 1),
+        y: getRandom(0, verticalBlocks - 1),
         remaining: true
       });
     }
   }
 
-  // TODO
-  // totalMushrooms = Math.round(
-  //   (this.props.horizontalBlocks + this.props.verticalBlocks) / 2
-  // );
-  totalMushrooms = 3;
+  totalMushrooms = Math.round(
+    (this.props.horizontalBlocks + this.props.verticalBlocks) / 2
+  );
 
   eatMushroom = (foundMushroom, startTime) => {
     const updatedMushrooms = this.state.mushrooms;
@@ -93,5 +95,12 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {
+  horizontalBlocks: PropTypes.number.isRequired,
+  verticalBlocks: PropTypes.number.isRequired,
+  setTotalTime: PropTypes.func.isRequired,
+  history: PropTypes.any.isRequired
+};
 
 export default withRouter(Board);

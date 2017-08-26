@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
+import PropTypes from "prop-types";
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: "",
-      height: "",
+      width: 0,
+      height: 0,
       isValid: false
     };
   }
 
   play() {
-    this.props.setBlocks(this.state.width, this.state.height);
+    this.props.setBlocks(
+      parseInt(this.state.width, 10),
+      parseInt(this.state.height, 10)
+    );
     this.props.history.push("/board");
   }
 
@@ -69,5 +73,10 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  setBlocks: PropTypes.func.isRequired,
+  history: PropTypes.any.isRequired
+};
 
 export default withRouter(Home);

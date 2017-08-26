@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from "./Home.jsx";
 import Board from "./Board.jsx";
@@ -35,18 +35,18 @@ class Game extends Component {
           <Route
             exact
             path="/"
-            render={props =>
+            render={() =>
               <Home setBlocks={this.setBlocks.bind(this)} {...this.state} />}
           />
           <Route
             path="/board"
-            render={props =>
+            render={() =>
               <Board
                 setTotalTime={this.setTotalTime.bind(this)}
                 {...this.state}
               />}
           />
-          <Route path="/score" render={props => <Score {...this.state} />} />
+          <Route path="/score" render={() => <Score {...this.state} />} />
         </div>
       </Router>
     );

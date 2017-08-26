@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Player extends Component {
   constructor(props) {
@@ -115,5 +116,11 @@ class Player extends Component {
     );
   }
 }
+
+Player.propTypes = {
+  boardDetails: PropTypes.object.isRequired,
+  mushrooms: PropTypes.array.isRequired,
+  eatMushroom: PropTypes.func.isRequired,
+};
 
 export default Player;

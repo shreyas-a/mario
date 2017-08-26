@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Score extends Component {
   constructor(props) {
@@ -20,16 +21,15 @@ class Score extends Component {
         <h1>MARIO - Score</h1>
         <hr />
         {hours} Hours {minutes} Minutes {seconds} Seconds
-
-        <Link to='/board'>
-          Restart
-        </Link>
-        <Link to='/'>
-          Home
-        </Link>
+        <Link to="/board">Restart</Link>
+        <Link to="/">Home</Link>
       </div>
     );
   }
 }
+
+Score.propTypes = {
+  totalTime: PropTypes.number.isRequired
+};
 
 export default Score;

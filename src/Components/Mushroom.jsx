@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Mushroom extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Mushroom extends Component {
       x: this.props.x,
       y: this.props.y,
       blockWidth: this.props.blockWidth,
-      blockHeight: this.props.blockHeight,
+      blockHeight: this.props.blockHeight
     };
   }
 
@@ -30,5 +31,12 @@ class Mushroom extends Component {
     );
   }
 }
+
+Mushroom.propTypes = {
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  blockWidth: PropTypes.number.isRequired,
+  blockHeight: PropTypes.number.isRequired
+};
 
 export default Mushroom;
