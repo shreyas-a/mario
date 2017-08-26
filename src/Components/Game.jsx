@@ -5,7 +5,7 @@ import Home from './Home.jsx';
 import Board from './Board.jsx';
 import Score from './Score.jsx';
 
-class App extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
   }
@@ -23,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Game;
