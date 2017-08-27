@@ -11,7 +11,6 @@
   "author": "Shreyas Agarkar <shreyas.a24@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.2.2"
