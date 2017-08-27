@@ -9,8 +9,8 @@ app.get("/", function(req, res) {
 
 app.use("/", express.static(publicPath));
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   /* eslint-disable no-console */
-  console.log("Listening on port 3000");
+  console.log("Listening on port " + process.env.PORT || 3000);
   /* eslint-enable no-console */
 });
