@@ -16,17 +16,12 @@ class Mushroom extends Component {
     const styles = {
       width: this.state.blockWidth + "px",
       height: this.state.blockHeight + "px",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "contain",
-      backgroundPosition: "center",
-      backgroundImage: `url('https://res.cloudinary.com/payjo-in/image/upload/c_scale,w_24/v1502452864/mushroom-512_f9ma5t.png')`,
       marginLeft: this.state.x * this.state.blockWidth + "px",
-      marginTop: this.state.y * this.state.blockHeight + "px",
-      position: "absolute"
+      marginTop: this.state.y * this.state.blockHeight + "px"
     };
     return (
       <div>
-        <div style={styles} />
+        <div className="entity mushroom" style={styles} />
       </div>
     );
   }

@@ -12,7 +12,7 @@ class Game extends Component {
     this.state = {
       horizontalBlocks: 0,
       verticalBlocks: 0,
-      totalTime: null
+      totalTime: 0
     };
   }
 

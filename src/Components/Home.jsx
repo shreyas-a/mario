@@ -6,8 +6,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: 0,
-      height: 0,
+      width: undefined,
+      height: undefined,
       isValid: false
     };
   }
@@ -52,21 +52,24 @@ class Home extends Component {
     return (
       <div>
         <h1>MARIO</h1>
-        <hr />
         <input
           type="number"
-          value={this.state.width}
+          min="1"
+          max="20"
+          className="flat"
           onChange={this.handleChangeWidth.bind(this)}
-          placeholder="width"
+          placeholder="m blocks"
         />
         <input
           type="number"
-          value={this.state.height}
+          min="1"
+          max="20"
+          className="flat"
           onChange={this.handleChangeHeight.bind(this)}
-          placeholder="height"
+          placeholder="n blocks"
         />
-        <hr />
-        <button onClick={this.play.bind(this)} disabled={!this.state.isValid}>
+        <br/>
+        <button className="btn flat" onClick={this.play.bind(this)} disabled={!this.state.isValid}>
           Play
         </button>
       </div>

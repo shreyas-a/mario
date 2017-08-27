@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 
 class Score extends Component {
   constructor(props) {
     super(props);
+
+    if (!this.props.totalTime) {
+      this.props.history.push("/");
+    }
   }
 
   render() {
-    var hours = Math.floor(
-      this.props.totalTime % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)
-    );
     var minutes = Math.floor(
       this.props.totalTime % (1000 * 60 * 60) / (1000 * 60)
     );
@@ -18,18 +20,30 @@ class Score extends Component {
 
     return (
       <div>
-        <h1>MARIO - Score</h1>
-        <hr />
-        {hours} Hours {minutes} Minutes {seconds} Seconds
-        <Link to="/board">Restart</Link>
-        <Link to="/">Home</Link>
+        <h1>MARIO</h1>
+        <h2>
+          <p>
+            {minutes || 0} minutes
+          </p>
+          <p>
+            {seconds || 0} seconds
+          </p>
+        </h2>
+        <br />
+        <Link className="btn flat" to="/board">
+          Restart
+        </Link>
+        <Link className="btn flat" to="/">
+          Home
+        </Link>
       </div>
     );
   }
 }
 
 Score.propTypes = {
-  totalTime: PropTypes.number.isRequired
+  totalTime: PropTypes.number.isRequired,
+  history: PropTypes.any.isRequired
 };
 
-export default Score;
+export default withRouter(Score);

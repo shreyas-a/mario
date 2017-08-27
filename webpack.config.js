@@ -12,3 +12,5 @@ if (TARGET === "start") {
 } else if (TARGET === "build") {
   module.exports = merge(commonConfig, prodConfig);
 }
+
+// TODO: adding extract text for css

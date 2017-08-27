@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
+import { withRouter } from "react-router";
+import PropTypes from "prop-types";
 
 import Player from "./Player.jsx";
 import Mushroom from "./Mushroom.jsx";
@@ -16,11 +16,15 @@ class Board extends Component {
       score: 0
     };
 
+    if (!(this.props.horizontalBlocks || this.props.verticalBlocks)) {
+      this.props.history.push("/");
+    }
+
     const getRandom = (min, max) =>
       Math.floor(Math.random() * (max - min + 1)) + min;
 
-      const horizontalBlocks =  this.props.horizontalBlocks
-      const verticalBlocks =  this.props.verticalBlocks
+    const horizontalBlocks = this.props.horizontalBlocks;
+    const verticalBlocks = this.props.verticalBlocks;
 
     for (let i = 0; i < this.totalMushrooms; i++) {
       this.state.mushrooms.push({
@@ -53,18 +57,16 @@ class Board extends Component {
   render() {
     const styles = {
       width: this.props.horizontalBlocks * this.state.blockWidth + "px",
-      height: this.props.verticalBlocks * this.state.blockHeight + "px",
-      background: "white",
-      border: "1px solid black"
+      height: this.props.verticalBlocks * this.state.blockHeight + "px"
     };
 
     return (
       <div>
-        <h1>
-          MARIO - {this.state.score}
-        </h1>
-        <hr />
-        <div style={styles}>
+        <h2>MARIO</h2>
+        <p>
+          {this.state.score} / {this.totalMushrooms}
+        </p>
+        <div className="board" style={styles}>
           <Player
             boardDetails={{
               blockWidth: this.state.blockWidth,

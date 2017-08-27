@@ -101,17 +101,12 @@ class Player extends Component {
     const styles = {
       height: this.boardDetails.blockHeight + "px",
       width: this.boardDetails.blockWidth + "px",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "contain",
-      backgroundPosition: "center",
-      backgroundImage: `url('http://res.cloudinary.com/payjo-in/image/upload/c_scale,w_24/v1502452976/1200x630bb_vokqee.jpg')`,
       marginTop: this.state.top * this.boardDetails.blockHeight + "px",
-      marginLeft: this.state.left * this.boardDetails.blockWidth + "px",
-      position: "absolute"
+      marginLeft: this.state.left * this.boardDetails.blockWidth + "px"
     };
     return (
       <div>
-        <div style={styles} />
+        <div className="entity player" style={styles} />
       </div>
     );
   }
