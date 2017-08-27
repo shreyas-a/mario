@@ -13,6 +13,7 @@ class Player extends Component {
   boardDetails = this.props.boardDetails;
   mushrooms = this.props.mushrooms;
   startTime = new Date().getTime();
+  steps = 0;
 
   shiftDirection = direction => {
     if (this.intervalId) {
@@ -60,11 +61,14 @@ class Player extends Component {
         mushroom.remaining
     );
     if (foundMushrooms) {
-      this.props.eatMushroom(foundMushrooms, this.startTime);
+      this.props.eatMushroom(foundMushrooms, this.startTime, this.steps);
     }
   };
 
   checkDirection = e => {
+    if(e.keyCode){
+      this.steps += 1;
+    }
     const toDirection = e.keyCode || e;
     const { left, top } = this.state;
     const bottomLimit = this.boardDetails.verticalBlocks - 1;

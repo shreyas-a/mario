@@ -28,6 +28,9 @@ class Score extends Component {
           <p>
             {seconds || 0} seconds
           </p>
+          <p>
+            {this.props.steps || 0} Steps taken
+          </p>
         </h2>
         <br />
         <Link className="btn flat" to="/board">
@@ -43,6 +46,7 @@ class Score extends Component {
 
 Score.propTypes = {
   totalTime: PropTypes.number.isRequired,
+  steps: PropTypes.number.isRequired,
   history: PropTypes.any.isRequired
 };
 

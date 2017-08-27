@@ -12,7 +12,8 @@ class Game extends Component {
     this.state = {
       horizontalBlocks: 0,
       verticalBlocks: 0,
-      totalTime: 0
+      totalTime: 0,
+      steps: 0
     };
   }
 
@@ -23,9 +24,9 @@ class Game extends Component {
     });
   }
 
-  setTotalTime(startTime) {
+  setTotalTime(startTime, steps) {
     const totalTime = new Date().getTime() - startTime;
-    this.setState({ totalTime });
+    this.setState({ totalTime, steps });
   }
 
   render() {

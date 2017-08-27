@@ -40,7 +40,7 @@ class Board extends Component {
     (this.props.horizontalBlocks + this.props.verticalBlocks) / 2
   );
 
-  eatMushroom = (foundMushroom, startTime) => {
+  eatMushroom = (foundMushroom, startTime, steps) => {
     const updatedMushrooms = this.state.mushrooms;
     updatedMushrooms[foundMushroom.key].remaining = false;
     this.setState({
@@ -49,7 +49,7 @@ class Board extends Component {
     });
 
     if (this.totalMushrooms === this.state.score) {
-      this.props.setTotalTime(startTime);
+      this.props.setTotalTime(startTime, steps);
       this.props.history.push("/score");
     }
   };
