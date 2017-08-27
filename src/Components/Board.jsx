@@ -64,8 +64,9 @@ class Board extends Component {
       <div>
         <h2>MARIO</h2>
         <p>
-          {this.state.score} / {this.totalMushrooms}
+          Score: {this.state.score} / {this.totalMushrooms}
         </p>
+        <p>Start with any of the arrow keys</p>
         <div className="board" style={styles}>
           <Player
             boardDetails={{

@@ -9,7 +9,7 @@ h1 {
 }
 
 .flat {
-  width: 200px;
+  width: 285px;
   font-size: 30px;
   font-family: inherit;
   text-align: center;
@@ -45,13 +45,11 @@ h1 {
 }
 
 .board {
-  width: 450px;
-  height: 300px;
   background: white;
   border: 10px solid grey;
   border-radius: 20px;
   position: absolute;
-  top: 0;
+  top: 30px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -67,9 +65,9 @@ h1 {
 }
 
 .player {
-  background-image: url('http://res.cloudinary.com/payjo-in/image/upload/c_scale,w_24/v1502452976/1200x630bb_vokqee.jpg');
+  background-image: url('/mario.png');
 }
 
 .mushroom{
-  background-image: url('https://res.cloudinary.com/payjo-in/image/upload/c_scale,w_24/v1502452864/mushroom-512_f9ma5t.png');
+  background-image: url('/mushroom.jpg');
 }

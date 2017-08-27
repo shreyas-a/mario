@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server",
-    "start": "node server.js"
+    "start": "webpack-dev-server",
+    "server": "node server.js"
   },
   "keywords": [],
   "author": "Shreyas Agarkar <shreyas.a24@gmail.com>",

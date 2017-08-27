@@ -22,7 +22,11 @@ class Home extends Component {
 
   areValuesValid() {
     this.setState({
-      isValid: this.state.width && this.state.height
+      isValid:
+        this.state.width > 0 &&
+        this.state.height > 0 &&
+        this.state.width <= 40 &&
+        this.state.height <= 20
     });
   }
 
@@ -52,13 +56,14 @@ class Home extends Component {
     return (
       <div>
         <h1>MARIO</h1>
+        <p>Enter dimensions of the play board</p>
         <input
           type="number"
           min="1"
           max="20"
           className="flat"
           onChange={this.handleChangeWidth.bind(this)}
-          placeholder="m blocks"
+          placeholder="Width (1 - 40)"
         />
         <input
           type="number"
@@ -66,10 +71,14 @@ class Home extends Component {
           max="20"
           className="flat"
           onChange={this.handleChangeHeight.bind(this)}
-          placeholder="n blocks"
+          placeholder="Height (1 - 20)"
         />
-        <br/>
-        <button className="btn flat" onClick={this.play.bind(this)} disabled={!this.state.isValid}>
+        <br />
+        <button
+          className="btn flat"
+          onClick={this.play.bind(this)}
+          disabled={!this.state.isValid}
+        >
           Play
         </button>
       </div>

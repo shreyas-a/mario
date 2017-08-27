@@ -23,10 +23,8 @@ class Score extends Component {
         <h1>MARIO</h1>
         <h2>
           <p>
-            {minutes || 0} minutes
-          </p>
-          <p>
-            {seconds || 0} seconds
+            {minutes ? `${minutes} minute(s), ` : ""}
+            {seconds || 0} second(s)
           </p>
           <p>
             {this.props.steps || 0} Steps taken
