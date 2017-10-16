@@ -20,4 +20,4 @@ yarn install
 
 ## Start it
 
-To start it simple fire `yarn start` inside the project dir, wait some seconds and check `http://localhost:8080/`
+To start it simple fire `yarn start` inside the project dir, then check `http://localhost:8080/`
