@@ -1,0 +1,9 @@
+
+{
+  "name": "Mario",
+  "description": "React powered simple Mario game",
+  "repository": "https://github.com/shreyas-a/mario",
+  "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/master/public/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
