@@ -5,10 +5,11 @@ const webpack = require("webpack");
 const html = require("html-webpack-plugin");
 const clean = require("clean-webpack-plugin");
 const copy = require("copy-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.jsx",
-  devtool: "inline-source-map",
+  devtool: "cheap-module-source-map",
   output: {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "../dist")
@@ -39,13 +40,14 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "vendor.[chunkhash].js",
-      minChunks: function(module) {
+      minChunks: function (module) {
         return module.context && module.context.indexOf("node_modules") !== -1;
       }
     }),
     new copy([{ from: "public" }]),
     new webpack.optimize.CommonsChunkPlugin({
       name: "runtime"
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ]
 };
