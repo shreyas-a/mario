@@ -12,7 +12,7 @@ class Home extends Component {
     };
   }
 
-  play() {
+  play = () => {
     this.props.setBlocks(
       parseInt(this.state.width, 10),
       parseInt(this.state.height, 10)
@@ -30,7 +30,7 @@ class Home extends Component {
     });
   }
 
-  handleChangeWidth(e) {
+  handleChangeWidth = (e) => {
     this.setState(
       {
         width: e.target.value
@@ -41,7 +41,7 @@ class Home extends Component {
     );
   }
 
-  handleChangeHeight(e) {
+  handleChangeHeight = (e) => {
     this.setState(
       {
         height: e.target.value
@@ -62,7 +62,7 @@ class Home extends Component {
           min="1"
           max="20"
           className="flat"
-          onChange={this.handleChangeWidth.bind(this)}
+          onChange={this.handleChangeWidth}
           placeholder="Width (1 - 40)"
         />
         <input
@@ -70,13 +70,13 @@ class Home extends Component {
           min="1"
           max="20"
           className="flat"
-          onChange={this.handleChangeHeight.bind(this)}
+          onChange={this.handleChangeHeight}
           placeholder="Height (1 - 20)"
         />
         <br />
         <button
           className="btn flat"
-          onClick={this.play.bind(this)}
+          onClick={this.play}
           disabled={!this.state.isValid}
         >
           Play

@@ -17,14 +17,14 @@ class Game extends Component {
     };
   }
 
-  setBlocks(horizontal, vertical) {
+  setBlocks = (horizontal, vertical) => {
     this.setState({
       horizontalBlocks: horizontal,
       verticalBlocks: vertical
     });
   }
 
-  setTotalTime(startTime, steps) {
+  setTotalTime = (startTime, steps) => {
     const totalTime = new Date().getTime() - startTime;
     this.setState({ totalTime, steps });
   }
@@ -33,25 +33,17 @@ class Game extends Component {
     return (
       <Router>
         <div>
-          <Route
-            exact
-            path="/"
-            render={() =>
-              <Home setBlocks={this.setBlocks.bind(this)} {...this.state} />}
-          />
-          <Route
-            path="/board"
-            render={() =>
-              <Board
-                setTotalTime={this.setTotalTime.bind(this)}
-                {...this.state}
-              />}
-          />
-          <Route path="/score" render={() => <Score {...this.state} />} />
+          <Route path="/" render={this.renderHome} exact />
+          <Route path="/board" render={this.renderBoard} />
+          <Route path="/score" render={this.renderScore} />
         </div>
       </Router>
     );
   }
+
+  renderHome = () => <Home setBlocks={this.setBlocks} {...this.state} />;
+  renderBoard = () => <Board setTotalTime={this.setTotalTime} {...this.state} />;
+  renderScore = () => <Score {...this.state} />;
 }
 
 export default Game;
