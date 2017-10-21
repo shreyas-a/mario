@@ -1,0 +1,13 @@
+language: node_js
+node_js: stable
+cache:
+  directories:
+    - node_modules
+script: yarn build
+deploy:
+  provider: heroku
+  api_key:
+    secure: hDOCZwi6ikrvz7iBchnenvm5HVAccVoZBJe7uH/Mjn2qlOZogRJf9Fm2FmZgHwkH2qDtSpZbGQnaYPrhnhmiwvJha6oIljSFFjaYWcdv0USt3cAGsfXiCRxvq7nYBTyZk/ayWOh6AzH2mkwn6vx6fyafg4Rqvc1mWAckukn01oeCl76whelP7bhsxxUuhZzeOE22EvWLrYfVOForZ6rM/pm2LCbMJD/mUcIdzegrWtuJoy5rkWZivGzvDaGu6C7FXMrQMLG7r/tKd0CjHHJRSU+GvrnFbCOvItM6raso+l2YAFkvqU7Pr+PyRRgU0h/sUaqXWl8+B1aCU3NsBydUWClgn1kUu3Xq3kdJIJSfCCUsDcaFtMrTwpyk7VWZ2Bzr5bkr0aWADyAHwXmgFYaCFFTelpvureIr29L20le9UB3KRBugGOvulMK6/QPHcSGs4+um5VEUGG21umnOj46f+KhP/M0S3fz9FcPmmcTjLPmrVesU5Bfg/mhuiBKRzkhyWAGnI18FYsY/hvKUbV3t7JLrEq1TXkiE7k1Ah50e9vWswZHqTHYzMf/6X9XBb3kwu6SaVAobfeCh/Eyda1unbrpioZ5k6xdQARXWA7M6rQ8LwqZ8W7fFY3ETGwyzNVnC9up7JtiCkWbOROnMMjQyhYjHw7JdaKr16ss5AtqPKls=
+  app: react-mario
+  on:
+    repo: shreyas-a/mario
