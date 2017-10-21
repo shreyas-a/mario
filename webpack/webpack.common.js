@@ -5,7 +5,6 @@ const webpack = require("webpack");
 const html = require("html-webpack-plugin");
 const clean = require("clean-webpack-plugin");
 const copy = require("copy-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -47,7 +46,6 @@ module.exports = {
     new copy([{ from: "public" }]),
     new webpack.optimize.CommonsChunkPlugin({
       name: "runtime"
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ]
 };
