@@ -1,5 +1,7 @@
 # Mario
 
+[![Build Status](https://travis-ci.org/shreyas-a/mario.svg?branch=master)](https://travis-ci.org/shreyas-a/mario)
+
 Mario is a snake like game where you play the mario character and need to collect mushrooms inside a predefined area.
 The game is based and powered by React. In the following text you will find the instructions how to get started and play a bit.
 
