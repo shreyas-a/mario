@@ -1,6 +1,8 @@
 language: node_js
 node_js: stable
-script: yarn build
+script:
+ - yarn build
+ - yarn add express
 deploy:
   provider: heroku
   api_key:
@@ -8,3 +10,4 @@ deploy:
   app: react-mario
   on:
     repo: shreyas-a/mario
+  skip_cleanup: true
