@@ -1,7 +1,7 @@
 {
   "name": "mario",
   "version": "1.0.0",
-  "description": "React powered Mario game.",
+  "description": "Mario made with React, Webpack, Node, Travis, Heroku",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
