@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 
 // Plugins
-const htmlBUG = require("html-webpack-plugin");
+const html = require("html-webpack-plugin");
 const clean = require("clean-webpack-plugin");
 const copy = require("copy-webpack-plugin");
 
