@@ -41,7 +41,7 @@ class Board extends Component {
   );
 
   eatMushroom = (foundMushroom, startTime, steps) => {
-    const updatedMushrooms = this.state.mushrooms;
+    const updatedMushrooms = [...this.state.mushrooms];
     updatedMushrooms[foundMushroom.key].remaining = false;
     this.setState({
       mushrooms: updatedMushrooms,
