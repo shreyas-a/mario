@@ -14,21 +14,19 @@ class Score extends Component {
 
   render() {
     var minutes = Math.floor(
-      this.props.totalTime % (1000 * 60 * 60) / (1000 * 60)
+      (this.props.totalTime % (1000 * 60 * 60)) / (1000 * 60)
     );
-    var seconds = Math.floor(this.props.totalTime % (1000 * 60) / 1000);
+    var seconds = Math.floor((this.props.totalTime % (1000 * 60)) / 1000);
 
     return (
-      <div>
+      <div className="funky">
         <h1>MARIO</h1>
         <h2>
           <p>
             {minutes ? `${minutes} minute(s), ` : ""}
             {seconds || 0} second(s)
           </p>
-          <p>
-            {this.props.steps || 0} Steps taken
-          </p>
+          <p>{this.props.steps || 0} Steps taken</p>
         </h2>
         <br />
         <Link className="btn flat" to="/board">

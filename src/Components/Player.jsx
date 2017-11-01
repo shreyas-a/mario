@@ -52,7 +52,7 @@ class Player extends Component {
         default:
           return;
       }
-    }, 200);
+    }, 50);
 
     const foundMushrooms = this.props.mushrooms.find(
       mushroom =>

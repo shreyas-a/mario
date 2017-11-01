@@ -62,7 +62,7 @@ class Board extends Component {
 
     return (
       <div>
-        <h2>MARIO</h2>
+        <h2 className="funky">MARIO</h2>
         <p>
           Score: {this.state.score} / {this.totalMushrooms}
         </p>

@@ -18,7 +18,7 @@ class Home extends Component {
       parseInt(this.state.height, 10)
     );
     this.props.history.push("/board");
-  }
+  };
 
   areValuesValid() {
     this.setState({
@@ -30,7 +30,7 @@ class Home extends Component {
     });
   }
 
-  handleChangeWidth = (e) => {
+  handleChangeWidth = e => {
     this.setState(
       {
         width: e.target.value
@@ -39,9 +39,9 @@ class Home extends Component {
         this.areValuesValid();
       }
     );
-  }
+  };
 
-  handleChangeHeight = (e) => {
+  handleChangeHeight = e => {
     this.setState(
       {
         height: e.target.value
@@ -50,12 +50,12 @@ class Home extends Component {
         this.areValuesValid();
       }
     );
-  }
+  };
 
   render() {
     return (
       <div>
-        <h1>MARIO</h1>
+        <h1 className="funky">MARIO</h1>
         <p>Enter dimensions of the play board</p>
         <input
           type="number"
@@ -63,7 +63,7 @@ class Home extends Component {
           max="20"
           className="flat"
           onChange={this.handleChangeWidth}
-          placeholder="Width (1 - 40)"
+          placeholder="Width 1 - 40"
         />
         <input
           type="number"
@@ -71,11 +71,11 @@ class Home extends Component {
           max="20"
           className="flat"
           onChange={this.handleChangeHeight}
-          placeholder="Height (1 - 20)"
+          placeholder="Height 1 - 20"
         />
         <br />
         <button
-          className="btn flat"
+          className="btn flat funky"
           onClick={this.play}
           disabled={!this.state.isValid}
         >
