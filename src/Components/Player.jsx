@@ -52,7 +52,7 @@ class Player extends Component {
         default:
           return;
       }
-    }, 50);
+    }, 200);
 
     const foundMushrooms = this.props.mushrooms.find(
       mushroom =>
@@ -66,7 +66,7 @@ class Player extends Component {
   };
 
   checkDirection = e => {
-    if(e.keyCode){
+    if (e.keyCode) {
       this.steps += 1;
     }
     const toDirection = e.keyCode || e;
@@ -119,7 +119,7 @@ class Player extends Component {
 Player.propTypes = {
   boardDetails: PropTypes.object.isRequired,
   mushrooms: PropTypes.array.isRequired,
-  eatMushroom: PropTypes.func.isRequired,
+  eatMushroom: PropTypes.func.isRequired
 };
 
 export default Player;
