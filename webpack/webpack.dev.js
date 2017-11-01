@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   devServer: {
@@ -7,5 +7,5 @@ module.exports = {
     hot: true,
     historyApiFallback: true
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new BundleAnalyzerPlugin()]
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
