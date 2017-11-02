@@ -25,8 +25,8 @@ class Home extends Component {
       isValid:
         this.state.width > 0 &&
         this.state.height > 0 &&
-        this.state.width <= 40 &&
-        this.state.height <= 20
+        this.state.width <= 20 &&
+        this.state.height <= 10
     });
   }
 
@@ -55,7 +55,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1 className="funky">MARIO</h1>
+        <h1 className="funky">MARIO..</h1>
         <p>Enter dimensions of the play board</p>
         <input
           type="number"
@@ -63,15 +63,15 @@ class Home extends Component {
           max="20"
           className="flat"
           onChange={this.handleChangeWidth}
-          placeholder="Width 1 - 40"
+          placeholder="Width 1 - 20"
         />
         <input
           type="number"
           min="1"
-          max="20"
+          max="10"
           className="flat"
           onChange={this.handleChangeHeight}
-          placeholder="Height 1 - 20"
+          placeholder="Height 1 - 10"
         />
         <br />
         <button
