@@ -69,6 +69,7 @@ h1 {
 
 .player {
   z-index: 1;
+  transition: all 0.06s ease 0s;
   background-image: url("/mario.png");
 }
 

@@ -55,7 +55,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1 className="funky">MARIO..</h1>
+        <h1 className="funky">MARIO</h1>
         <p>Enter dimensions of the play board</p>
         <input
           type="number"
